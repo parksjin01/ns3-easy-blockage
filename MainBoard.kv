@@ -1,0 +1,79 @@
+#:kivy 1.0.9
+
+<TitleSection>:
+    canvas:
+        Color:
+            rgb: 0, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: root.size
+
+<CodeSection>:
+    canvas:
+        Color:
+            rgb: 0.8, 0.8, 0.8
+        Rectangle:
+            pos: self.pos
+            size: root.size
+
+<SceneSection>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: root.size
+
+<SelectSection>:
+    canvas:
+        Color:
+            rgb: 0.5, 0.5, 0.5
+        Rectangle:
+            pos: self.pos
+            size: root.size
+
+<MainBoard>:
+    SelectSection:
+        id: selection
+        x: 0
+        y: 0
+        size: root.width/4, root.height
+        Label:
+            color: 0, 0, 0, 1
+            font_size: 40
+            center_x: root.width/4/2
+            center_y: root.height/2
+            text: "Select Section"
+    SceneSection:
+        id: scene
+        x: root.width/4
+        y: 0
+        size: root.width/2, root.height
+        Label:
+            color: 0, 0, 0, 1
+            font_size: 40
+            center_x: root.width/2
+            center_y: root.height/2
+            text: "Scene Section"
+    CodeSection:
+        id: code
+        x: root.width/4 * 3
+        y: 0
+        size: root.width/4, root.height
+        Label:
+            color: 0, 0, 0, 1
+            font_size: 40
+            center_x: root.width - (root.width - root.width/4*3)/2
+            center_y: root.height/2
+            text: "Code Section"
+    TitleSection:
+        id: title
+        x: 0
+        y: root.height - root.height/10
+        size: root.width, root.height/10
+        Label:
+            color: 1, 1, 1, 1
+            font_size: 40
+            center_x: root.width/2
+            center_y: root.height - root.height/10/2
+            text: 'Title Section'
