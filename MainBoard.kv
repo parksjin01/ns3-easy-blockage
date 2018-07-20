@@ -32,18 +32,32 @@
             pos: self.pos
             size: root.size
 
+<SelectScroll>:
+    pos: self.pos
+
+<SelectList>:
+    pos:self.pos
+
+<SelectItem>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+
 <MainBoard>:
     SelectSection:
         id: selection
         x: 0
         y: 0
-        size: root.width/4, root.height
-        Label:
-            color: 0, 0, 0, 1
-            font_size: 40
-            center_x: root.width/4/2
-            center_y: root.height/2
-            text: "Select Section"
+        size: root.width/4, (root.height - root.height/10)
+        ScrollView:
+            size_hint: None, None
+            size: root.width/4, (root.height - root.height/10)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            do_scroll_x: False
+            SelectList:
+                pos: root.pos
+
+
     SceneSection:
         id: scene
         x: root.width/4

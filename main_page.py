@@ -1,9 +1,14 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, ReferenceListProperty,\
-    ObjectProperty
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.listview import ListView
+from kivy.adapters.simplelistadapter import SimpleListAdapter
+from kivy.uix.label import Label
+from kivy.properties import NumericProperty, ReferenceListProperty, BooleanProperty, ObjectProperty
 from kivy.vector import Vector
 from kivy.clock import Clock
+
+from Select_Part.Select_Class import *
 
 class TitleSection(Widget):
     pass
