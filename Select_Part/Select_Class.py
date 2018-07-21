@@ -1,9 +1,12 @@
-from kivy.uix.listview import ListView
+from kivy.uix.listview import ListView, ListItemButton
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.adapters.listadapter import ListAdapter
 from kivy.uix.label import Label
+
 import json
+
+import main_page
 
 # TODO
 # 1. Add proper picture for each obstacles
@@ -24,7 +27,7 @@ class MyLabel(GridLayout):
         self.add_widget(kwargs['Initial_Legs'], index=4)
 
 
-class SelectItem(GridLayout):
+class SelectItem(GridLayout, ListItemButton):
     def __init__(self, **kwargs):
         super(SelectItem, self).__init__(**kwargs)
 
@@ -50,7 +53,10 @@ class SelectList(ListView):
         super(SelectList, self).__init__(**kargs)
         blockage_item = ListAdapter(data=self.data['Obstacles'], args_converter=self.args_converter, cls = SelectItem, selection_mode="single", allow_empty_selection="True")
         self.adapter = blockage_item
-        print dir(BoxLayout)
+        self.adapter.bind(on_selection_change=self.selection_change)
+
+    def selection_change(self, adapter, *args):
+        main_page.current_obstacle = adapter.selection[0].children[0].children[0].text
 
     def args_converter(self, row_index, obj):
         return {

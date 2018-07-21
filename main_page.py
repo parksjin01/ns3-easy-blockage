@@ -9,6 +9,11 @@ from kivy.vector import Vector
 from kivy.clock import Clock
 
 from Select_Part.Select_Class import *
+from Scene_Part.Scene_Class import *
+
+current_obstacle = "Clicked"
+fild_directory = "Obstacle_Locations/"
+file_name = "test.json"
 
 class TitleSection(Widget):
     pass
