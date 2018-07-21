@@ -3,35 +3,35 @@
           [
             {
               "Name": "Building",
-              "Image": "./",
+              "Image": "./Building.png",
               "Initial_Size": [200, 200, 30],
               "Initial_Legs": 0,
               "Description": "Bulding obstacles"
             },
             {
               "Name": "Plane",
-              "Image": "./",
+              "Image": "./Plane.png",
               "Initial_Size": [30, 10, 30],
               "Initial_Legs": 0,
               "Description": "Plane obstacles, user can use this obstacles to create wall, pillar or TV inside"
             },
             {
               "Name": "Desk",
-              "Image": "./",
+              "Image": "./Desk.png",
               "Initial_Size": [2, 0.7, 1],
               "Initial_Legs": 4,
               "Description": "Ready made desk obstacles. User can just use this obstacles easily and can change property"
             },
             {
               "Name": "Chair",
-              "Image": "./",
+              "Image": "./Chair.png",
               "Initial_Size": [0.5, 0.5, 0.8],
               "Initial_Legs": 4,
               "Description": "Ready made chair obstacles. User can just use this obstacles easily and can change property"
             },
             {
               "Name": "BookShelf",
-              "Image": "./",
+              "Image": "./Bookshelf.png",
               "Initial_Size": [2, 0.7, 2.5],
               "Initial_Legs": 0,
               "Description": "Ready made BookShelf obstacles. User can just use this obstacles easily and can change property"
