@@ -11,33 +11,36 @@ import main_page
 class Touch_Handle():
     def __init__(self, root):
         self.root = root
+        try:
+            with open(main_page.file_dir + main_page.file_name, 'r') as f:
+                self.obstacle_list = json.load(f)
+                for obstacle in self.obstacle_list['obstacle_list']:
+                    image = Image(source=main_page.icon_dir + obstacle['image'],
+                                  center_x=obstacle['position'][0], center_y=obstacle['position'][1])
+                    self.root.add_widget(image, index=1)
+        except Exception, e:
+            self.obstacle_list = {"obstacle_list":[]}
 
     def on_touch_down(self, touch):
 
         if main_page.current_obstacle == {}:
             return
 
-        try:
-            with open(main_page.file_dir + main_page.file_name, 'r') as f:
-                obstacle_list = json.load(f)
-        except:
-            obstacle_list = {"obstacle_list":[]}
-
         x, y = touch.pos
-        label = Image(source = main_page.icon_dir + main_page.current_obstacle['Image'], center_x=touch.pos[0], center_y=touch.pos[1])
-        print main_page.current_obstacle
-        if self.root.pos[0] + label.width/2 <= x and x <= self.root.pos[0] + self.root.size[0] - label.width/2:
-            if self.root.pos[1] + label.height/2 <= y and y <= self.root.pos[1] + self.root.size[1] - label.height/2:
-                self.root.add_widget(label, index=1)
+        image = Image(source = main_page.icon_dir + main_page.current_obstacle['Image'], center_x=touch.pos[0], center_y=touch.pos[1])
+        if self.root.pos[0] + image.width/2 <= x and x <= self.root.pos[0] + self.root.size[0] - image.width/2:
+            if self.root.pos[1] + image.height/2 <= y and y <= self.root.pos[1] + self.root.size[1] - image.height/2:
+                self.root.add_widget(image, index=1)
 
                 obstacle = {}
-                obstacle['title'] = main_page.current_obstacle
+                obstacle['title'] = main_page.current_obstacle['Name']
                 obstacle['position'] = touch.pos
-                obstacle['size'] = label.size
-                obstacle_list['obstacle_list'].append(obstacle)
+                obstacle['size'] = main_page.current_obstacle['Initial_Size']
+                obstacle['image'] = main_page.current_obstacle['Image']
+                self.obstacle_list['obstacle_list'].append(obstacle)
 
                 with open(main_page.file_dir + main_page.file_name, 'w') as f:
-                    json.dump(obstacle_list, f)
+                    json.dump(self.obstacle_list, f)
 
     def on_touch_move(self, touch):
         print touch
