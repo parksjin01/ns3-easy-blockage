@@ -3,7 +3,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.adapters.listadapter import ListAdapter
 from kivy.uix.label import Label
 from kivy.uix.image import Image
-from kivy.graphics.context_instructions import Color
 
 import json
 
